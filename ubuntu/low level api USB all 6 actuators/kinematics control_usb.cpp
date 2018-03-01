@@ -13,7 +13,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "Kinova.API.EthCommLayerUbuntu.h"
+#include "Kinova.API.CommLayerUbuntu.h"
 #include <string.h>
 #include <arpa/inet.h>
 
