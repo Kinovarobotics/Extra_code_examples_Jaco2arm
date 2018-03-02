@@ -52,7 +52,7 @@ int main()
 
 	//Flag used during initialization.
 	bool Actuator1Initialized = false; 
-	bool Actuator6Initialized = false
+	bool Actuator6Initialized = false;
 
 	//Variable needed during worker thread creation but not used after.
 	int ThreadArgument = 0;
