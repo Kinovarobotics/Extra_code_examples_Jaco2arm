@@ -114,7 +114,7 @@ int main()
 			MyRS485_Write(&InitMessage, 1, WriteCount);
 
 			//In case we did not received the answer, we continue reading until it's done
-			while(ReadCount!=1 && !Actuator1Initialized)
+			while(!Actuator1Initialized)
 			{
 				//MyRS485_Write(&InitMessage, 1, WriteCount);
 				usleep(4000);
@@ -152,7 +152,7 @@ int main()
 			MyRS485_Write(&InitMessage, 1, WriteCount);
 			ReadCount=0;
 			//In case we did not received the answer, we continue reading until it's done
-			while(ReadCount != 1 && !Actuator6Initialized)
+			while(!Actuator6Initialized)
 			{
 				//MyRS485_Write(&InitMessage, 1, WriteCount);
 				usleep(4000);
