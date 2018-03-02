@@ -51,7 +51,8 @@ int main()
 	int ReadCount = 0;
 
 	//Flag used during initialization.
-	bool Actuator6Initialized = false;
+	bool Actuator1Initialized = false; 
+	bool Actuator6Initialized = false
 
 	//Variable needed during worker thread creation but not used after.
 	int ThreadArgument = 0;
@@ -113,7 +114,7 @@ int main()
 			MyRS485_Write(&InitMessage, 1, WriteCount);
 
 			//In case we did not received the answer, we continue reading until it's done
-			while(ReadCount!=1 && !Actuator6Initialized)
+			while(ReadCount!=1 && !Actuator1Initialized)
 			{
 				//MyRS485_Write(&InitMessage, 1, WriteCount);
 				usleep(4000);
@@ -128,6 +129,7 @@ int main()
 				if(ReceiveInitMessage[0].SourceAddress == 0x10 && ReceiveInitMessage[0].Command == RS485_MSG_SEND_ACTUALPOSITION)
 				{
 					Joint1Command = ReceiveInitMessage[0].DataFloat[1];
+					Actuator1Initialized = true;
 				}
 			}
 
