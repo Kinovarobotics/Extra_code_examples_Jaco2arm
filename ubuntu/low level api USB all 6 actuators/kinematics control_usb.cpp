@@ -282,7 +282,7 @@ int main()
 					{
 						cout << "exceed loop" << endl;
 					}
-					MyRS485_Read(MessageListIn,3 , MessageReadCount);
+					MyRS485_Read(MessageListIn,12 , MessageReadCount);
 					for(int j = 0; j < MessageReadCount; j++)
 					{
 						switch(MessageListIn[j].SourceAddress)
