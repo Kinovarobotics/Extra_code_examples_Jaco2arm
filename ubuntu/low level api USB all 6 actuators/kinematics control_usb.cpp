@@ -123,6 +123,10 @@ int main()
 				{
 					cout << ReadCount << endl;
 				}
+				else if (ReadCount==0)
+				{
+					MyRS485_Write(&InitMessage, 1, WriteCount);
+				}
 
 				//We make sure that the mesage come from actuator 6(0x15) and that the command ID is RS485_MSG_SEND_ACTUALPOSITION
 				//which is the answer of our message. (See document Kinova RS485 Communication protocol).
@@ -156,6 +160,10 @@ int main()
 				if (ReadCount>=1)
 				{
 					cout << ReadCount << endl;
+				}
+				else if (ReadCount==0)
+				{
+					MyRS485_Write(&InitMessage, 1, WriteCount);
 				}
 
 				//We make sure that the mesage come from actuator 6(0x15) and that the command ID is RS485_MSG_SEND_ACTUALPOSITION
