@@ -64,7 +64,7 @@ int main()
 	RS485_Message InitMessage;
 
 	//Message to receive the actuator 6's position.
-	RS485_Message ReceiveInitMessage[3];
+	RS485_Message ReceiveInitMessage[10];
 
 	//Message to move the actuator 6.EthernetCommConfig & config
 	RS485_Message TrajectoryMessage[6];
@@ -119,7 +119,7 @@ int main()
 				//MyRS485_Write(&InitMessage, 1, WriteCount);
 				usleep(4000);
 				MyRS485_Read(ReceiveInitMessage, 1, ReadCount);
-				if (ReadCount==1)
+				if (ReadCount>=1)
 				{
 					cout << ReadCount << endl;
 				}
@@ -153,7 +153,7 @@ int main()
 				//MyRS485_Write(&InitMessage, 1, WriteCount);
 				usleep(4000);
 				MyRS485_Read(ReceiveInitMessage, 1, ReadCount);
-				if (ReadCount==1)
+				if (ReadCount>=1)
 				{
 					cout << ReadCount << endl;
 				}
