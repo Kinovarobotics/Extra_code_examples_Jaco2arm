@@ -1,0 +1,13 @@
+C:\stash\sdk_windows\Examples\Example_Ethernet7dof_Kinematics\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\mblouin\Downloads\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\mblouin\Downloads\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\mblouin\Downloads\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\mblouin\Downloads\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\mblouin\Downloads\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\mblouin\Downloads\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\mblouin\Downloads\home_arm_c_sharp\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\mblouin\Downloads\home_arm_c_sharp\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\mblouin\Downloads\home_arm_c_sharp\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\mblouin\Downloads\home_arm_c_sharp\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\mblouin\Downloads\home_arm_c_sharp\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\mblouin\Downloads\home_arm_c_sharp\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
