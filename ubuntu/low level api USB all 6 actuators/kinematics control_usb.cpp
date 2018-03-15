@@ -13,7 +13,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "Kinova.API.EthCommLayerUbuntu.h"
+#include "Kinova.API.CommLayerUbuntu.h"
 #include <string.h>
 #include <arpa/inet.h>
 
@@ -51,6 +51,7 @@ int main()
 	int ReadCount = 0;
 
 	//Flag used during initialization.
+	bool Actuator1Initialized = false; 
 	bool Actuator6Initialized = false;
 
 	//Variable needed during worker thread creation but not used after.
@@ -63,7 +64,7 @@ int main()
 	RS485_Message InitMessage;
 
 	//Message to receive the actuator 6's position.
-	RS485_Message ReceiveInitMessage[3];
+	RS485_Message ReceiveInitMessage[10];
 
 	//Message to move the actuator 6.EthernetCommConfig & config
 	RS485_Message TrajectoryMessage[6];
@@ -113,14 +114,18 @@ int main()
 			MyRS485_Write(&InitMessage, 1, WriteCount);
 
 			//In case we did not received the answer, we continue reading until it's done
-			while(ReadCount!=1 && !Actuator6Initialized)
+			while(!Actuator1Initialized)
 			{
 				//MyRS485_Write(&InitMessage, 1, WriteCount);
 				usleep(4000);
 				MyRS485_Read(ReceiveInitMessage, 1, ReadCount);
-				if (ReadCount==1)
+				if (ReadCount>=1)
 				{
 					cout << ReadCount << endl;
+				}
+				else if (ReadCount==0)
+				{
+					MyRS485_Write(&InitMessage, 1, WriteCount);
 				}
 
 				//We make sure that the mesage come from actuator 6(0x15) and that the command ID is RS485_MSG_SEND_ACTUALPOSITION
@@ -128,6 +133,7 @@ int main()
 				if(ReceiveInitMessage[0].SourceAddress == 0x10 && ReceiveInitMessage[0].Command == RS485_MSG_SEND_ACTUALPOSITION)
 				{
 					Joint1Command = ReceiveInitMessage[0].DataFloat[1];
+					Actuator1Initialized = true;
 				}
 			}
 
@@ -146,14 +152,18 @@ int main()
 			MyRS485_Write(&InitMessage, 1, WriteCount);
 			ReadCount=0;
 			//In case we did not received the answer, we continue reading until it's done
-			while(ReadCount != 1 && !Actuator6Initialized)
+			while(!Actuator6Initialized)
 			{
 				//MyRS485_Write(&InitMessage, 1, WriteCount);
 				usleep(4000);
 				MyRS485_Read(ReceiveInitMessage, 1, ReadCount);
-				if (ReadCount==1)
+				if (ReadCount>=1)
 				{
 					cout << ReadCount << endl;
+				}
+				else if (ReadCount==0)
+				{
+					MyRS485_Write(&InitMessage, 1, WriteCount);
 				}
 
 				//We make sure that the mesage come from actuator 6(0x15) and that the command ID is RS485_MSG_SEND_ACTUALPOSITION
@@ -280,7 +290,7 @@ int main()
 					{
 						cout << "exceed loop" << endl;
 					}
-					MyRS485_Read(MessageListIn,3 , MessageReadCount);
+					MyRS485_Read(MessageListIn,12 , MessageReadCount);
 					for(int j = 0; j < MessageReadCount; j++)
 					{
 						switch(MessageListIn[j].SourceAddress)

@@ -70,7 +70,7 @@ int main()
 	MyRS485_Write = (int(*)(RS485_Message*, int, int &)) GetProcAddress(commLayer_Handle, "OpenRS485_Write");
 
 	//If all functions are loaded correctly.
-	if (fptrInitCommunication != NULL || MyRS485_Activate != NULL || MyRS485_Read != NULL || MyRS485_Write != NULL)
+	if (fptrInitCommunication != NULL && MyRS485_Activate != NULL && MyRS485_Read != NULL && MyRS485_Write != NULL)
 	{
 		//Initialization of the API
 		int result = fptrInitCommunication();
