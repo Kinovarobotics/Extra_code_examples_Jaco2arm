@@ -68,6 +68,7 @@ int main()
 	MyRS485_Activate = (int(*)()) GetProcAddress(commLayer_Handle, "OpenRS485_Activate");
 	MyRS485_Read = (int(*)(RS485_Message*, int, int &)) GetProcAddress(commLayer_Handle, "OpenRS485_Read");
 	MyRS485_Write = (int(*)(RS485_Message*, int, int &)) GetProcAddress(commLayer_Handle, "OpenRS485_Write");
+	fptrCloseCommunication = (int(*)()) GetProcAddress(commLayer_Handle, "CloseCommunication");
 
 	//If all functions are loaded correctly.
 	if (fptrInitCommunication != NULL && MyRS485_Activate != NULL && MyRS485_Read != NULL && MyRS485_Write != NULL)
@@ -173,7 +174,7 @@ int main()
 		cout << "Errors while loading API's function" << endl;
 	}
 
-	_getch();
+	int result = fptrCloseCommunication();
 
 	return 0;
 }
