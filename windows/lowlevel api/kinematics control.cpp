@@ -169,7 +169,7 @@ int main()
 				ReadPosition(MessageListIn);
 			}
 		}
-		int result = fptrCloseCommunication();
+		result = fptrCloseCommunication();
 	}
 	else
 	{
