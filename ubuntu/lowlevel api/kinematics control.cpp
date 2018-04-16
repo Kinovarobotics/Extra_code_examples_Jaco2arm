@@ -185,14 +185,14 @@ int main()
 
 			pthread_join(GetPositionThread, NULL); //waits for the GetPositionThread thread to terminate
 		}
-
+		int result = fptrCloseCommunication();
 
 	}
 	else
 	{
 		cout << "Errors while loading API's function" << endl;
 	}
-        int result = fptrCloseCommunication();
+        
 	return 0;
 }
 
