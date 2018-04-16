@@ -343,7 +343,7 @@ int main()
 			}
 			cout << "mean " << sum/LOOPCOUNT << endl;
 		}
-
+ 		int result = fptrCloseCommunication();
 
 	}
 	else
@@ -351,7 +351,7 @@ int main()
 		cout << "Errors while loading API's function" << endl;
 	}
 	
-        int result = fptrCloseCommunication();
+       
 	return 0;
 }
 
