@@ -169,13 +169,14 @@ int main()
 				ReadPosition(MessageListIn);
 			}
 		}
+		int result = fptrCloseCommunication();
 	}
 	else
 	{
 		cout << "Errors while loading API's function" << endl;
 	}
 
-	int result = fptrCloseCommunication();
+	
 
 	return 0;
 }
