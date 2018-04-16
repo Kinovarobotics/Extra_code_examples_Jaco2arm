@@ -343,7 +343,7 @@ int main()
 			}
 			cout << "mean " << sum/LOOPCOUNT << endl;
 		}
- 		int result = fptrCloseCommunication();
+ 		result = fptrCloseCommunication();
 
 	}
 	else
