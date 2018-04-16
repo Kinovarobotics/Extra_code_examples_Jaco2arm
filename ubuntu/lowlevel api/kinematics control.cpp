@@ -185,7 +185,7 @@ int main()
 
 			pthread_join(GetPositionThread, NULL); //waits for the GetPositionThread thread to terminate
 		}
-		int result = fptrCloseCommunication();
+		result = fptrCloseCommunication();
 
 	}
 	else
