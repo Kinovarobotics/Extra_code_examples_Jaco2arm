@@ -35,6 +35,7 @@ int(*fptrInitCommunication)();
 int(*MyRS485_Activate)();     // FUNCTION TO ACTIVATE USB - RS485 MODE //
 int(*MyRS485_Read)(RS485_Message* PackagesIn, int QuantityWanted, int &ReceivedQtyIn);
 int(*MyRS485_Write)(RS485_Message* PackagesOut, int QuantityWanted, int &ReceivedQtyIn);
+int(*fptrCloseCommunication)();
 
 //MAIN(SEND information)
 int main()
