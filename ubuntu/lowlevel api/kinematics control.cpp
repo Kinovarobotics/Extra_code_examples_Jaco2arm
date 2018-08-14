@@ -37,6 +37,7 @@ int(*fptrInitCommunication)();
 int(*MyRS485_Activate)();     // FUNCTION TO ACTIVATE USB - RS485 MODE //
 int(*MyRS485_Read)(RS485_Message* PackagesIn, int QuantityWanted, int &ReceivedQtyIn);
 int(*MyRS485_Write)(RS485_Message* PackagesOut, int QuantityWanted, int &ReceivedQtyIn);
+int(*fptrCloseCommunication)();
 
 //MAIN(SEND information)
 int main()
@@ -73,7 +74,8 @@ int main()
 	MyRS485_Activate = (int (*)()) dlsym(commLayer_Handle,"OpenRS485_Activate");
 	MyRS485_Read = (int (*)(RS485_Message* PackagesIn, int QuantityWanted, int &ReceivedQtyIn)) dlsym(commLayer_Handle,"OpenRS485_Read");
 	MyRS485_Write = (int (*)(RS485_Message* PackagesOut, int QuantityWanted, int &ReceivedQtyIn)) dlsym(commLayer_Handle,"OpenRS485_Write");
-
+        fptrCloseCommunication = (int(*)()) GetProcAddress(commLayer_Handle, "CloseCommunication");
+	
 	//If all functions are loaded correctly.
 	if(fptrInitCommunication != NULL && MyRS485_Activate != NULL && MyRS485_Read != NULL && MyRS485_Write != NULL)
 	{
@@ -183,14 +185,14 @@ int main()
 
 			pthread_join(GetPositionThread, NULL); //waits for the GetPositionThread thread to terminate
 		}
-
+		result = fptrCloseCommunication();
 
 	}
 	else
 	{
 		cout << "Errors while loading API's function" << endl;
 	}
-
+        
 	return 0;
 }
 

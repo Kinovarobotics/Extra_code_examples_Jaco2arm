@@ -41,6 +41,7 @@ int(*fptrInitCommunication)(EthernetCommConfig & config); //ETHERNET
 int(*MyRS485_Activate)();     // FUNCTION TO ACTIVATE USB - RS485 MODE //
 int(*MyRS485_Read)(RS485_Message* PackagesIn, int QuantityWanted, int &ReceivedQtyIn);
 int(*MyRS485_Write)(RS485_Message* PackagesOut, int QuantityWanted, int &ReceivedQtyIn);
+int(*fptrCloseCommunication)(); //ETHERNET
 
 //MAIN(SEND information)
 int main()
@@ -84,6 +85,7 @@ int main()
 	MyRS485_Activate = (int (*)()) dlsym(commLayer_Handle,"Ethernet_Communication_OpenRS485_Activate");
 	MyRS485_Read = (int (*)(RS485_Message* PackagesIn, int QuantityWanted, int &ReceivedQtyIn)) dlsym(commLayer_Handle,"Ethernet_Communication_OpenRS485_Read");
 	MyRS485_Write = (int (*)(RS485_Message* PackagesOut, int QuantityWanted, int &ReceivedQtyIn)) dlsym(commLayer_Handle,"Ethernet_Communication_OpenRS485_Write");
+	fptrCloseCommunication = (int (*)()) dlsym(commLayer_Handle,"Ethernet_Communication_CloseCommunication");
 
 	//If all functions are loaded correctly.
 	if(fptrInitCommunication != NULL && MyRS485_Activate != NULL && MyRS485_Read != NULL && MyRS485_Write != NULL)
@@ -349,14 +351,14 @@ int main()
 			}
 			cout << "mean " << sum/LOOPCOUNT << endl;
 		}
-
+		result = fptrCloseCommunication();
 
 	}
 	else
 	{
 		cout << "Errors while loading API's function" << endl;
 	}
-
+	
 	return 0;
 }
 
